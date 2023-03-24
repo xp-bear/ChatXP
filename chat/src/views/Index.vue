@@ -35,6 +35,7 @@
         text-color="#fff"
         :stroke-width="4"
         style="margin-top: 10px"
+        class="process"
       ></el-progress>
       <!-- 输入框 -->
       <div class="message">
@@ -121,13 +122,13 @@ export default {
     },
     // 请求
     toSend() {
-      // 判断是否为空
-      if (this.$refs.load.innerHTML == "加载中...") {
+      // 加载数据时,禁止点击按钮
+      if (this.fullscreenLoading == true) {
         return this.$message({
           showClose: true,
           message: "当前数据正在加载中...",
           duration: 1000,
-          type: "error",
+          type: "warning",
         });
       }
       if (this.keyword.length <= 0) {
@@ -149,7 +150,7 @@ export default {
           }
         }, 250);
       }
-
+      // 添加提问者数据对象
       this.msg.push({
         url: "http://cdn.xxoutman.cn/image-1677924848663.png",
         keyword: this.keyword,
@@ -369,7 +370,8 @@ export default {
         }
       }
     }
-
+    .process {
+    }
     .message {
       width: 700px;
       height: 48px;
