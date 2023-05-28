@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { chatGPTApi } from "@/api/index";
+import { chatGPTApi, newGPTApi } from "@/api/index";
 export default {
   name: "Index",
   data() {
@@ -216,6 +216,40 @@ export default {
           }, 100);
         }, 1000);
       } else {
+        newGPTApi({
+          input: key,
+          chatbotId: "75e78e3b-ee5d-4e1b-97c5-76f53af8bc28",
+          userId: "auto:1b49cee2-bb9a-4b9e-93f8-4b19ffdd2da0",
+          provider: "OPEN_AI",
+        })
+          .then((res) => {
+            this.msg.push({
+              url: "http://cdn.xxoutman.cn/logo.jpg",
+              keyword: res.response,
+            });
+            this.$refs.load.innerHTML = "Send";
+            this.fullscreenLoading = false;
+            this.isInputBool = false; //启用输入框
+            this.processNum = 99;
+            this.$refs.ipt.focus();
+            setTimeout(() => {
+              // 页面滚动
+              this.scrollTo(document.body, 1000);
+              this.$refs.ipt.focus();
+            }, 300);
+          })
+          .catch((err) => {
+            // console.log(err);
+            this.isErrorpanel = true;
+            this.$refs.load.innerHTML = "Send";
+            this.fullscreenLoading = false;
+            this.isInputBool = false; //启用输入框
+            clearInterval(this.timer);
+            this.processNum = 0;
+            this.$refs.ipt.focus();
+          });
+        // 以前的老接口
+        /* 
         chatGPTApi({
           messages: [
             { role: "system", content: "请以markdown的形式返回答案" },
@@ -252,6 +286,7 @@ export default {
             this.processNum = 0;
             this.$refs.ipt.focus();
           });
+        */
       }
     },
     // 监听回车事件

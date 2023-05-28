@@ -8,7 +8,7 @@ const service = axios.create({
   baseURL: baseUrl,
   timeout: 60000,
   // headers: {
-  //   Referer: "http://chat.qiuyeye.cn/",
+  //   Referer: "https://ora.ai/embed/75e78e3b-ee5d-4e1b-97c5-76f53af8bc28",
   // },
 });
 
