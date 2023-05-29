@@ -10,6 +10,31 @@
       html {
         background-color: #171921;
         box-sizing: border-box;
+        position: relative;
+      }
+      .l-adv,
+      .r-adv {
+        height: 222px;
+        box-sizing: border-box;
+        padding: 0 150px;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        display: none;
+      }
+      .l-adv img,
+      .r-adv img {
+        height: 100%;
+      }
+      .r-adv {
+        right: 0;
+      }
+      /* 当屏幕宽度大于1200px时，应用特定样式 */
+      @media (min-width: 1355px) {
+        .l-adv,
+        .r-adv {
+          display: block;
+        }
       }
     </style>
   </head>
@@ -17,6 +42,12 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <div class="l-adv">
+      <img src="./img/wx.jpg" alt="" />
+    </div>
+    <div id="r-ani" class="r-adv">
+      <img src="./img/zhihu.jpg" alt="" />
+    </div>
     <div id="app"></div>
   </body>
 </html>

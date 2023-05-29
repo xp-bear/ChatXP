@@ -150,6 +150,13 @@ export default {
           }
         }, 250);
       }
+      if (this.isErrorpanel == true) {
+        this.isErrorpanel = false; //关闭错误展示面板
+        this.msg.push({
+          url: "http://cdn.xxoutman.cn/logo.jpg",
+          keyword: "请求人数较多，请稍后重试!",
+        });
+      }
       // 添加提问者数据对象
       this.msg.push({
         url: "http://cdn.xxoutman.cn/image-1677924848663.png",
