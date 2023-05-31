@@ -8,7 +8,7 @@
       <div class="title">
         <span>ChatXP </span>
         <span>Professional</span>
-        <p>Based on OpenAI API (gpt-4.0-turbo) | Made by <a href="https://github.com/xp-bear" target="_blank" style="color: aqua">xp-bear</a></p>
+        <p>Based on OpenAI API (gpt-3.5-turbo) | Made by <a href="https://github.com/xp-bear" target="_blank" style="color: aqua">xp-bear</a></p>
       </div>
 
       <!-- 内容 -->
@@ -46,6 +46,22 @@
         <button class="clear" @click="clear"><img src="@/assets/clear.png" alt="" /></button>
       </div>
     </div>
+
+    <!-- 脚部 -->
+    <div class="footer">您的支持改变世界，点击<span style="color: aqua; cursor: pointer" @click="dialogVisible = true">立即赞助</span> ，您将与我们一起改变世界，推动创新和进步。</div>
+
+    <!-- 弹出层 -->
+    <el-dialog :visible.sync="dialogVisible" width="40%" :show-close="false" :center="true">
+      <!-- 支付二维码 -->
+      <div class="code">
+        <h2>感谢您的支持</h2>
+        <p>看在这个作者分享不易上，请打赏支持一下吧🥺...</p>
+        <div class="pay">
+          <img src="@/assets/wx.jpg" alt="" />
+          <img src="@/assets/zhihu.jpg" alt="" />
+        </div>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -62,6 +78,7 @@ export default {
       isInputBool: false, //输入框是否禁用
       processNum: 0, //进度条
       timer: null, //定时器
+      dialogVisible: false, //弹出层状态
     };
   },
   methods: {
@@ -323,10 +340,20 @@ export default {
 <style lang="scss" scoped>
 .Index {
   position: relative;
+  ::v-deep .el-dialog__header {
+    display: none;
+  }
+  ::v-deep .el-dialog__body {
+    padding: 24px;
+    overflow: hidden;
+  }
+  ::v-deep .el-dialog {
+    border-radius: 15px !important;
+  }
   .box {
     width: 700px;
     margin: 0 auto;
-    padding: 2rem 2rem 2rem;
+    padding: 2rem 2rem 1rem;
     overflow: auto;
     .avatar {
       display: flex;
@@ -452,6 +479,34 @@ export default {
           width: 24px;
           height: 24px;
         }
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    font-family: "黑体";
+    letter-spacing: 0.012em;
+    font-size: 16px;
+  }
+  .code {
+    h2,
+    p {
+      text-align: center;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .pay {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: 48%;
+        border-radius: 5px;
       }
     }
   }
