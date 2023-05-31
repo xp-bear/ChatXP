@@ -483,6 +483,8 @@ export default {
     }
   }
   .footer {
+    width: 700px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     color: #94a3b8;
