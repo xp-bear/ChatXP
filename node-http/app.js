@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   // 检查请求头中是否已经有Referer
   // if (!req.headers.referer) {
   // 如果没有，则设置Referer请求头为您希望的值
-  req.headers.referer = "https://ora.ai/embed/75e78e3b-ee5d-4e1b-97c5-76f53af8bc28";
+  req.headers.referer = "https://chat5.wuguokai.top/";
   // }
 
   // 继续处理下一个中间件或路由处理程序
@@ -43,7 +43,12 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/api", createProxyMiddleware({ target: "https://ora.ai/api/conversation", changeOrigin: true, pathRewrite: { "^/api": "" } }));
+app.post("/api", createProxyMiddleware({ target: "https://chat2.wuguokai.cn/api/chat-process", changeOrigin: true, pathRewrite: { "^/api": "" } }));
+
+// 搜索音乐接口
+app.get("/search", createProxyMiddleware({ target: "https://service-l39ky64n-1255944436.bj.apigw.tencentcs.com/release/search", changeOrigin: true, pathRewrite: { "^/search": "" } }));
+// 播放音乐接口
+app.get(`/play`, createProxyMiddleware({ target: `https://service-l39ky64n-1255944436.bj.apigw.tencentcs.com/release/music`, changeOrigin: true, pathRewrite: { "^/play": "" } }));
 
 app.listen(3500, () => {
   console.log("服务启动成功~ 端口: http://127.0.0.1:3500");

@@ -241,15 +241,15 @@ export default {
         }, 1000);
       } else {
         newGPTApi({
-          input: key,
-          chatbotId: "75e78e3b-ee5d-4e1b-97c5-76f53af8bc28",
-          userId: "auto:1b49cee2-bb9a-4b9e-93f8-4b19ffdd2da0",
-          provider: "OPEN_AI",
+          prompt: key,
+          options: {},
+          userId: "#/chat/1688475358672",
+          usingContext: true,
         })
           .then((res) => {
             this.msg.push({
               url: "http://cdn.xxoutman.cn/logo.jpg",
-              keyword: res.response,
+              keyword: res,
             });
             this.$refs.load.innerHTML = "Send";
             this.fullscreenLoading = false;
