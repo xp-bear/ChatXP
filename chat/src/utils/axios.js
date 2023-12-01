@@ -6,10 +6,7 @@ import { baseUrl } from "./config";
 // 创建一个实例
 const service = axios.create({
   baseURL: baseUrl,
-  timeout: 60000,
-  // headers: {
-  //   Referer: "https://ora.ai/embed/75e78e3b-ee5d-4e1b-97c5-76f53af8bc28",
-  // },
+  timeout: 100000,
 });
 
 //添加请求拦截器
