@@ -7,6 +7,11 @@ import { baseUrl } from "./config";
 const service = axios.create({
   baseURL: baseUrl,
   timeout: 100000,
+  headers: {
+    "Access-Control-Allow-Origin": "https://aip.baidubce.com/oauth/2.0/token", // 设置跨域访问允许的源
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
 });
 
 //添加请求拦截器
